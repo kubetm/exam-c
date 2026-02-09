@@ -4,6 +4,7 @@ metadata:
   name: busybox-logger
   namespace: priority
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: busybox-logger
@@ -21,5 +22,5 @@ spec:
               cpu: 1000m
               memory: 1000Mi
             requests:
-              cpu: 1000m
-              memory: 1000Mi
+              cpu: 800m
+              memory: 800Mi
