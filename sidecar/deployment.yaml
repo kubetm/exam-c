@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: synergy-deployment
+spec:
+  selector:
+    matchLabels:
+      app: synergy
+  template:
+    metadata:
+      labels:
+        app: synergy
+    spec:
+      containers:
+        - name: synergy-app
+          image: busybox:stable
+          command: ['sh', '-c', 'while true; do echo "logging" >> /var/log/synergy-deployment.log; sleep 2; done']

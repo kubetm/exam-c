@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox-logger
+  namespace: priority
+spec:
+  selector:
+    matchLabels:
+      app: busybox-logger
+  template:
+    metadata:
+      labels:
+        app: busybox-logger
+    spec:
+      containers:
+        - name: busybox
+          image: busybox
+          command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 1000Mi
+            requests:
+              cpu: 1000m
+              memory: 1000Mi

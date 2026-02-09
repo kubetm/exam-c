@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb
+  namespace: relative-fawn
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mariadb
+  template:
+    metadata:
+      labels:
+        app: mariadb
+    spec:
+      containers:
+        - name: mariadb
+          image: 1pro/exam
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              cpu: 800m
+              memory: 800Mi
+            requests:
+              cpu: 400m
+              memory: 400Mi

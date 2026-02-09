@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: others
+  namespace: priority
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: others
+  template:
+    metadata:
+      labels:
+        app: others
+    spec:
+      containers:
+        - name: busybox
+          image: busybox
+          command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 1000Mi
+            requests:
+              cpu: 1000m
+              memory: 1000Mi
